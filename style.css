@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+.game-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+input[type="number"] {
+  width: 60%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+.message {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  min-height: 1.5rem;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+.message.animate-guess {
+  animation: pulse 0.6s ease;
+}
+.attempts {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+.success {
+  color: green;
+  font-weight: bold;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fce18a;
+  opacity: 0.9;
+  top: 0;
+  animation: confetti-fall 3s linear forwards;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 10;
+}
+.confetti:nth-child(2n) {
+  background-color: #ff726d;
+}
+.confetti:nth-child(3n) {
+  background-color: #b48def;
+}
+.confetti:nth-child(4n) {
+  background-color: #f4306d;
+}
+.lost-animation {
+  animation: shake 0.5s ease;
+  color: #d9534f !important;
+  font-weight: bold;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
